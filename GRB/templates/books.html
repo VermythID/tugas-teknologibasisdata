@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Books</title>
+</head>
+<style>
+    table {
+        border: 8px outset;
+        border-radius: 10px;
+        border-spacing: 10px;
+        padding: 20px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    th,
+    td {
+        padding: 5px;
+        border: 1px solid;
+    }
+</style>
+
+<body>
+    <h2 style="text-align:center"> Books in Branch {{store_id}} </h2>
+    <a style="text-align:center" href = "/"> Return to Branches List</a>
+    <table align="center" style="margin: 0px auto;">
+        <thead>
+            <tr>
+                <th>Book ID</th>
+                <th>Title</th>
+                <th>Description</th>
+                <th>Release Year</th>
+                <th>Language</th>
+                <th>Publisher</th>
+                <th>Price (USD)</th>
+                <th>Edit</th>
+                <th>Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for book in books %}
+            <tr>
+                <td>{{book.book_id}}</td>
+                <td>{{book.title}}</td>
+                <td>{{book.description}}</td>
+                <td>{{book.release_year}}</td>
+                <td>{{book.languages}}</td>
+                <td>{{book.publisher.name}}</td>
+                <td>{{book.price}}</td>
+                <td>
+                    <a href="/edit_books/{{book.pk}}">Update</a>
+                </td>
+                <td>
+                    <a href="/remove_book/{{book.pk}}">Delete</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <br><br>
+</body>
+
+</html>

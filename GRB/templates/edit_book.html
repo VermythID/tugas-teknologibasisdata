@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update Branch</title>
+</head>
+<style>
+    table {
+        border: 8px outset;
+        border-radius: 10px;
+        border-spacing: 10px;
+        padding: 20px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    th,
+    td {
+        padding: 5px;
+    }
+</style>
+
+<body>
+    <h2 style="text-align:center"> Update Details of Store Branch </h2>
+    <form method="POST">
+        {% csrf_token %}
+        <table style="width:50%" align="center">
+            <tr>
+                <td>Branch to Store</td>
+                <td><input type=" text" class="form-control" id="store_id" value="{{ books.store_id }}" name="store_id"></td>
+            </tr>
+            <tr>
+                <td>Book Title</td>
+                <td><input type="text" class="form-control" id="title" value="{{ books.title }}" name="title"></td>
+            </tr>
+            <tr>
+                <td>Book Description</td>
+                <td><input type="text" class="form-control" id="description" value="{{ books.description }}" name="description"></td>
+            </tr>
+            <tr>
+                <td>Release Year</td>
+                <td><input type="text" class="form-control" id="release_year" value="{{ books.release_year}}" name="release_year"></td>
+            </tr>
+            <tr>
+                <td>Language</td>
+                <td><input type="text" class="form-control" id="languages" value="{{ books.languages}}" name="languages" value="{{ books.languages}}" name="phone"></td>
+            </tr>"></td>
+            </tr>
+            <tr>
+                <td>Publisher ID</td>
+                <td><input type="text" class="form-control" id="publisher_id" value="{{ books.publisher_id}}" name="publisher_id"></td>
+            </tr>
+            <tr>
+                <td>Price</td>
+                <td><input type="text" class="form-control" id="price" value="{{ books.price}}" name="price"></td>
+            </tr>
+            <tr>
+                <td colspan="2",align="center">
+                    <button type = "submit" class = "btn btn-primary">
+                        Edit Book
+                    </button>
+                </td>
+            </tr>
+        </table>
+    </form>
+</body>
+
+</html>

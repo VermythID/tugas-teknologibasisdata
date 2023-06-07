@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GRB Store Branches</title>
+</head>
+<style>
+    table {
+        border: 8px outset;
+        border-radius: 10px;
+        border-spacing: 10px;
+        padding: 20px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    th,
+    td {
+        padding: 5px;
+        border: 1px solid;
+    }
+    div {
+        padding-top: 20px;
+        text-align: center;
+    }
+</style>
+
+<body>
+    <h2 style="text-align:center"> Store Branches </h2>
+    <table align="center" style="margin: 0px auto;">
+        <thead>
+            <tr>
+                <th>Store ID</th>
+                <th>Address</th>
+                <th>District</th>
+                <th>City ID</th>
+                <th>Postal Code</th>
+                <th>Phone</th>
+                <th>Edit</th>
+                <th>Delete</th>
+                <th>View Store</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for store in stores %}
+            <tr>
+                <td>{{store.store_id}}</td>
+                <td>{{store.address}}</td>
+                <td>{{store.district}}</td>
+                <td>{{store.city_id}}</td>
+                <td>{{store.postal_code}}</td>
+                <td>{{store.phone}}</td>
+                <td>
+                    <a href="/edit_stores/{{store.store_id}}">Update</a>
+                </td>
+                <td>
+                    <a href="/remove_store/{{store.store_id}}">Delete</a>
+                </td>
+                <td>
+                    <form method = "post" action="books/">
+                        {% csrf_token %}
+                        <button name = "store_id", value = "{{ store.store_id }}">
+                            View
+                        </button>
+                    </form>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <div>
+        <a href="/dml_stores/">
+            Create a new branch of store
+        </a>
+    </div>
+    <div>
+        <a href="/dml_books/">
+            Add a new book to a branch
+        </a>
+    </div>
+
+    <br><br>
+</body>
+
+</html>
